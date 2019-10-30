@@ -11,7 +11,14 @@ namespace BusinessLogic
         /// <returns></returns>
         public static bool IsSsn(string ssn)
         {
-            throw new NotImplementedException();
+            ssn = ssn.Trim();
+            ssn.Replace("-", "");
+            //If number does not have a length of 9 or have anything other than digits
+            if (ssn.Length != 9 || !System.Text.RegularExpressions.Regex.IsMatch(ssn, "[0-9]*"))
+            {
+                return false;
+            }
+            return true;
         }
 
         /// <summary>
@@ -23,7 +30,11 @@ namespace BusinessLogic
         /// <returns></returns>
         public static bool IsWithinRange(int numToTest, int minValue, int maxValue)
         {
-            throw new NotImplementedException();
+            if (numToTest < minValue || numToTest > maxValue)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
